@@ -1,30 +1,21 @@
 #include <stdio.h>
 
-float arithmetic(float a, float b, int operation);
-
 int main()
 {
-   float x = 1, y = 5;
-   int operation = 4;
-   float result;
+    const int N = 5; // const means "constant"
+    float data[5] = {1.2, 8.4, 10.8, -0.4, -8.234, 3.1};
+    float maximum = -1e30; // Declare other variables
+    int i;
+    int maxIndex;
 
-   result = arithmetic(x, y, operation);
-   printf("%f\n", result);
-}
-
-float arithmetic(float a, float b, int operation)
-{
-    switch(operation)
+    for(i = 0 ; i < N ; i++) // Implement search
     {
-        case 0: return a + b;
-            break;
-        case 1: return a - b;
-            break;
-        case 2: return a*b;
-            break;
-        case 3: return a/b;
-            break;
-        default: printf("Illegal operation %d\n", operation);
-            return 0;
+       if(data[i] > maximum)
+       {
+           maximum = data[i];
+           maxIndex = i;
+       }
     }
+
+    printf("The maximum value was %f, found at index %d", maximum, maxIndex);   // Print result
 }
