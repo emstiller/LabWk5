@@ -1,21 +1,27 @@
 #include <stdio.h>
 
+int isPrime(int x);
+
 int main()
 {
-    const int N = 5; // const means "constant"
-    float data[5] = {1.2, 8.4, 10.8, -0.4, -8.234, 3.1};
-    float maximum = -1e30; // Declare other variables
-    int i;
-    int maxIndex;
-
-    for(i = 0 ; i < N ; i++) // Implement search
+    int testNum;
+    for(testNum = 2; testNum < 20; testNum++)
     {
-       if(data[i] > maximum)
-       {
-           maximum = data[i];
-           maxIndex = i;
-       }
+        if(isPrime(testNum))
+            printf("%d is prime\n", testNum);
+        else
+            printf("%d is not prime\n", testNum);
     }
+    return 0;
+}
 
-    printf("The maximum value was %f, found at index %d", maximum, maxIndex);   // Print result
+int isPrime(int x)
+{
+    int count;
+    for(count = 2; count < x; count++)
+    {
+        if(x%count == 0)
+            return 0;
+    }
+    return 1;
 }
