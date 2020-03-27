@@ -1,4 +1,5 @@
 # depslib dependency file v1.0
-1585281931 source:c:\users\emily\documents\newcastle\engg1003\labwk5\main.c
+1585285917 source:c:\users\emily\documents\newcastle\engg1003\labwk5\main.c
 	<stdio.h>
+	<math.h>
 
