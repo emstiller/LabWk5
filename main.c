@@ -2,44 +2,25 @@
 
 int main()
 {
-    /* maximum integer to test, declared constant
-    so maximum integer can be easily changed */
-    const int MAX = 100;
-    char numbers[100]; //index ranges from 0 to 99
-    int index;
-    int j = 1;
+    float x[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    float variance, mean;
+    float sum1 = 0, sum2 = 0;
+    int n; // counter
 
-    //initialised numbers[]
-    for(index = 0; index < MAX; index++)
+    // calculate sample mean
+    for(n = 0; n < 9; n++)
     {
-        numbers[index] = 1;
+        sum1 = sum1 + x[n];
     }
+    mean = sum1/n;
 
-
-    /* do the Sieve algorithm here
-    for(index = 2; ...etc */
-    for(index = 2; index < MAX; index++) // starting at index 2, going up to 100
+    for(n = 0; n < 9; n++)
     {
-        if(numbers[index] == 1) // which they will because they were all set to 1
-        {
-           for(j = 2*index; j < MAX; j = j + index)
-           {
-               numbers[j] = 0;
-           }
-        }
+        sum2 = sum2 + (x[n] - mean)*(x[n] - mean);
     }
+    variance = sum2/(n-1);
 
-    //print results
-    printf("The following numbers are prime:\n");
-
-    for(index = 2; index < MAX; index++)
-    {
-        if(numbers[index] == 1) // remaining indices that haven't been crossed out
-        {
-            printf("%d\n", index);
-        }
-    }
+    printf("Mean: %f\nVariance: %f\n", mean, variance);
     return 0;
 }
-/* why is it that when I have <= for any
-of the conditions the code doesn't work? */
+
