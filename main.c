@@ -1,24 +1,37 @@
 #include <stdio.h>
 
-float diff(float x, float h);
-float f(float x);
+unsigned int fib(void);
 
 int main()
 {
-    float h = 0.0001;
-    printf("%f\n", diff(0, h));
-    printf("%f\n", diff(1, h));
-    printf("%f\n", diff(-1, h));
+    int n;
+
+    for(n = 1; n < 10; n++)
+    {
+        printf("%d %u\n", n, fib() );
+    }
+
+    return 0;
 }
 
-float diff(float x,float h)
+unsigned int fib(void)
 {
-    float d;
-    d = (f(x + h) - f(x))/h;
-    return d;
-}
-//function definition
-float f(float x)
-{
-    return x*x + 2*x - 1;
+    static int xnm2 = 1;
+    static int xnm1 = 1;
+    static int xn = 0;
+
+    xnm2 = xnm1;
+    xnm1 = xn;
+
+    switch(xn) {
+    case 0: xnm1 = 1;
+        xn = xnm1 + xnm2;
+        return xnm2;
+        break;
+    case 2: xn = xnm1 + xnm2;
+        return xnm2;
+        break;
+    default: xn = xnm1 + xnm2;
+        return xnm2;
+    }
 }
